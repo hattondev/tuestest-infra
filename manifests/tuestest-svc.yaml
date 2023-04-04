@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tuestest-svc
+  labels:
+    app: tuestest
+    version: 0.0.1
+    backstage.io/kubernetes-id: tuestest
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: tuestest

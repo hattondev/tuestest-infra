@@ -1,0 +1,22 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: tuestest-vs
+  labels:
+    app: tuestest
+    version: 0.0.1
+    backstage.io/kubernetes-id: tuestest
+spec:
+  gateways:
+  - istio-gateway/apps-gateway
+  hosts:
+  - tuestest.apps.wwtlab.net
+  http:
+  - name: primary
+    route:
+    - destination:
+        host: tuestest-svc
+        port:
+          number: 80
+      weight: 100

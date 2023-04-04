@@ -1,0 +1,16 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: tuestest-hpa
+  labels:
+    app: tuestest
+    version: 0.0.1
+    backstage.io/kubernetes-id: tuestest
+spec:
+ scaleTargetRef:
+   apiVersion: apps/v1
+   kind: Deployment
+   name: tuestest
+ minReplicas: 1
+ maxReplicas: 4
+ targetCPUUtilizationPercentage: 75
